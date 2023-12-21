@@ -1,0 +1,190 @@
+/*** DEBUG ***/ 
+/*
+main *[class]::before {
+  content: "." attr(class);
+  font-size: smaller;
+  font-variant-position: super;
+  color: steelblue;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+}
+main *[class] {
+border: 0.5px dotted steelblue;
+  box-shadow: 2px 2px 5px hsla(199, 50%, 33%, 0.1);
+}
+*/
+
+
+/*
+ *       Titelei
+ */
+.pdf_RezJLT_Rezensent_Name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.17em; 
+  margin-block-start: 1em;
+  margin-block-end: 0.5em;
+  hyphens: manual;
+}
+
+.pdf_RezJLT_Titel_Rezension {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  hyphens: manual;
+}
+
+.pdf_RezJLT_Untertitel_Rezension { 
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.17em;
+  hyphens: manual;
+}
+
+.pdf_RezJLT_Lit_Angaben_Rezensiertes_Buch {
+      margin: 0pt;
+      margin-top: 18pt;
+      margin-bottom: 18pt;
+      margin-left: 20.0mm;
+      padding: 0pt;
+      border: none;
+      font-size: 11.0pt;
+}
+
+.simple {
+      line-height: normal;
+}
+
+/*
+ * Blockformate Haupttext
+ */
+.pdf_RezJLT_Haupttext, :where(main.text p) {
+  hyphens: auto;
+  text-align: justify;
+}
+
+.item {
+}
+
+.pdf_RezJLT_Zitat_in_Haupttext {
+      border: none;
+      margin: 0px;
+      margin-bottom: 12pt;
+      margin-left: 15.01mm;
+      padding: 0px;
+      font-size: 9pt;
+}
+
+.pdf_RezJLT_ZwischenueberschriftNummeriert1, .noteHeading {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  margin-block-start: 1.33em;
+  margin-block-end: 1em;
+}
+
+/*
+ * Kram unter dem Haupttext
+ */
+.pdf_RezJLT_footer-autor-nameadresse {
+        border: none;
+        margin: 0px;
+        margin-bottom: 18pt;
+        font-size: 11.0pt;
+        text-align: right;
+}
+
+.pdf_RezJLT_Endnotentext {
+      margin: 0px;
+      margin-bottom: 6pt;
+      text-align: left;
+      font-size: 9.0pt;
+      border: none;
+}
+
+.pdf_RezJLT_Publikationsdatum {
+        border: none;
+        margin: 0px;
+        margin-top: 30pt;
+        font-size: 11.0pt;
+}
+.pdf_RezJLT_ISSN {
+        border: none;
+        margin: 0px;
+        margin-bottom: 12pt;
+        font-size: 11.0pt;
+}
+.pdf_RezJLT_Copy-note {
+        border: none;
+        margin: 0px;
+        font-size: 11.0pt;        
+}
+
+.howtoCite {
+        border: 1px solid black;
+        margin-top: 18pt;
+        padding: 0mm 1.91mm;
+        width: 147.96mm;
+        font-size: 9.0pt;
+}
+.pdf_RezJLT_common_Titel_in_howto {
+        margin-bottom: 12pt; 
+        margin: 0mm;
+        border: none;
+        font-weight: bold;
+}
+.pdf_RezJLT_Text_in_Howto, .pdf_RezJLT_urn-in-how-to, .pdf_RezJLT_Link_in-how-to {
+        margin: 0mm;
+        border: none;
+        font-size: 9.0pt;
+} 
+.howtoCite > *:last-child {
+      margin-top: 12pt;
+}
+
+/* Julians Mail vom 2014-02-17: */
+.JLT_Literaturverzeichnistext {
+  font-size: 0.95em;
+  margin-left: 2em;
+  text-indent: -2em;
+  text-align: left;
+  hyphens: manual;
+}
+*.JLT_Literaturverzeichnistext:last-child {
+      margin-bottom: 11pt;
+}
+.JLT_DOI_Absatz_Haupt {
+      font-size: 11pt;
+      margin-bottom: 18pt;
+}
+.JLT_DOI_Autorname {
+      font-size: 12pt;
+      font-weight: bold;
+}
+.JLT_DOI_Aufsatztitel {
+      font-weight: bold;
+      margin-bottom: 18pt;
+}
+.JLT_DOI_Heftnummer {
+      margin-bottom: 12pt;
+}
+
+/*
+ * Inlineformate
+ */
+.pdf_RezJLT_Buchtitel_in_Haupttext_Zchn, .pdf_RezJLT_Buchtitel_in_Endnote,
+.JLT_Buctitel, .JLT_Hervorhebung {
+      font-style: italic;
+      background: inherit;
+}
+.pdf_RezJLT_Haupttext_Hervorhebung_Zchn, .pdf_RezJLT_Endnotentext_Hervorhebung_Zchn,
+.Emphasis, .JLT_Hervorhebung {
+      font-style: italic;
+      background: inherit;
+}
+.pdf_Rez_Copyright_fett_Zchn {
+        font-weight: bold;
+        background: inherit;
+}
+.pdf_RezJLT_Haupttext_Fett_Beitraegernamen {
+      font-weight: bold;
+}

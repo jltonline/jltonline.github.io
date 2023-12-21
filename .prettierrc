@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "index.html",
+      "options": {
+        "printWidth": 132,
+        "htmlWhitespaceSensitivity": "css",
+        "proseWrap": "always"
+      }
+    }
+  ]
+}

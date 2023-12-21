@@ -1,0 +1,366 @@
+@import url(sanitize.css);
+@import url(typography.css);
+@import url(system-ui.css);
+@import url(jltreview.css);
+
+:root {
+  cursor: revert;
+  /* override opinionated setting in sanitize.css */
+}
+
+html {
+  --mobile-button-background: #f4f4f4;
+}
+
+/******************************* Basic Layout Grid ************************/
+
+/* Mobile layout – width < 1000px. 
+*
+* This arranges all items below each other im the order header > main > sidebars > footer 
+*/
+
+@media (max-width: 999px) {
+
+  body {
+    display: grid;
+    grid-template:
+      "header"
+      "main"
+      "left"
+      "right"
+      "footer";
+    grid-template-columns: 100vw;
+    margin: 0;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  header>img {
+    width: 100%;
+    padding: 0;
+  }
+
+
+  header menu {
+    list-style: none;
+    padding: 0;
+    max-height: 100%;
+    overflow: clip;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  header menu>li a {
+    background: repeat url('../img/bluebg.png'), hsl(225, 73%, 15%);
+    color: white;
+    font-family: "sans-serif";
+    font-weight: bold;
+    display: block;
+    margin-block-end: 1px;
+    padding: 1.5ex;
+    /* Make the actual links large enough to be touchable */
+  }
+
+  label.hamburger {
+    display: block;
+    background: none;
+    width: 50px;
+    height: 50px;
+    ;
+    position: absolute;
+    top: 2px;
+    left: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+  }
+
+  input#hamburger {
+    display: none;
+  }
+
+  .line {
+    position: absolute;
+    left: 4px;
+    height: 4px;
+    width: 36px;
+    background: #fff;
+    border-radius: 2px;
+    display: block;
+    transition: all 0.5s;
+    transform-origin: center;
+  }
+
+  .line:nth-child(1) {
+    top: 12px;
+  }
+
+  .line:nth-child(2) {
+    top: 24px;
+  }
+
+  .line:nth-child(3) {
+    top: 36px;
+  }
+
+  #hamburger:checked+.hamburger .line:nth-child(1) {
+    transform: translateY(12px) rotate(-45deg);
+  }
+
+  #hamburger:checked+.hamburger .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger:checked+.hamburger .line:nth-child(3) {
+    transform: translateY(-12px) rotate(45deg);
+  }
+
+  #hamburger~nav {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  #hamburger:checked~nav {
+    max-height: 600px;
+  }
+
+  aside {
+    max-width: initial;
+    margin-inline: 1em;
+  }
+
+  aside.sidebarright>* {
+    max-width: inherit;
+  }
+
+  /* formatted stuff from the database */
+  section#journal-metadata {
+    max-width: calc(100vw - 2em);
+    overflow-y: scroll
+  }
+}
+
+@media (min-width: 1000px) {
+
+  body {
+    display: grid;
+    grid-template:
+      "header header      header"
+      "left   main        right"
+      "footer footer      footer";
+    grid-template-columns: 200px 660px 140px;
+    grid-template-rows: calc(120px + 10px + 2em);
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  header {
+    grid-area: header;
+    max-width: 1000px;
+    box-shadow: 2px 2px 5px lightgray;
+  }
+
+  header>img {
+    /* Logo image, 1000x120 px */
+    width: 100%;
+  }
+
+  #hamburger,
+  #hamburger+.hamburger {
+    display: none;
+  }
+
+  header menu {
+    /* Sections; and language link */
+    display: flex;
+    width: 100%;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-block: 5px;
+    list-style: none;
+    justify-content: space-between;
+  }
+
+  header menu li {
+    list-style: none;
+    margin-inline: 1em;
+    flex-grow: 0;
+  }
+
+
+  /** The sidebars: left = people, right = static metadata */
+  aside {
+    max-width: 200px;
+  }
+
+  .sidebarright>* {
+    max-width: 138px;
+    /* so breit wie die Bilder */
+  }
+
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  grid-area: main;
+  margin: 0 20px;
+}
+
+aside {
+  color: gray;
+}
+
+.sidebarleft {
+  grid-area: left;
+}
+
+.sidebarleft ul {
+  padding: 0;
+  list-style-type: none
+}
+
+.sidebarright {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+}
+
+/***************************************** Global style settings *************************************/
+nav a {
+  text-decoration: none
+}
+
+.internal {
+  display: none
+}
+
+nav.breadcrumbs ul {
+  display: flex;
+  border-bottom: 1px solid lightgray;
+}
+
+nav.breadcrumbs li+li::before {
+  content: "›";
+  margin-inline: 0.25em;
+}
+
+/***************************************** Journal page (= list of issues) **************************/
+ul.issues {
+  list-style: none;
+}
+
+ul.issues>li:first-child {
+  font-weight: bold;
+  margin-bottom: 2ex;
+}
+
+/***************************************** Issue page (= list of articles) **************************/
+.issue main article {
+  /* Entry for a single article */
+  display: grid;
+  grid-template-columns: auto 10em;
+  grid-template-areas:
+    "title   links"
+    "authors links";
+  margin-bottom: 2ex;
+}
+
+.issue main article>p {
+  margin: 0;
+}
+
+.issue main article>.title {
+  grid-area: title;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.issue main article>.authors {
+  grid-area: authors;
+  font-style: italic;
+  text-indent: 2em
+}
+
+.issue main article>nav {
+  grid-area: links;
+  padding: 0 0.5ex
+}
+
+.issue main article:hover {
+  background: #f0f4ff;
+}
+
+@media (max-width: 999px) {
+  .issue main article {
+    grid-template-areas:
+      "title"
+      "authors"
+      "links";
+    grid-template-columns: 1fr;
+  }
+
+  .issue main article>nav {
+    display: flex;
+    justify-items: stretch;
+  }
+
+  .issue main article>nav a {
+    padding: 5px;
+    margin: 5px;
+    flex: 1;
+    text-align: center;
+    /* box-shadow: -2px -2px 2px #eee inset, 2px 2px 5px #ddd; */
+    background: var(--mobile-button-background)
+  }
+
+}
+
+a.subscription::before {
+  content: "🔒"
+}
+
+a.openaccess::before {
+  content: "🕮 "
+}
+
+/***************************************** Language selection **************************/
+html[lang="de"] [lang="en"] {
+  display: none;
+}
+
+html[lang="de"] [lang="en"][translate="no"] {
+  display: revert;
+}
+
+html[lang="en"] [lang="de"] {
+  display: none;
+}
+
+html[lang="en"] [lang="de"][translate="no"] {
+  display: revert;
+}
+
+a[hreflang]::after {
+  content: attr(hreflang);
+  font-variant-position: super;
+  font-size: smaller;
+  font-style: italic;
+  color: gray;
+}
+
+.diverging-lang {
+  background: red;
+  color: white;
+  font-weight: bold;
+}
