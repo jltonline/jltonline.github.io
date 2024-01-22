@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <title>Pflege der JLTonline-Seiten</title>
+
+    <!-- Einbindung des Designs etc: -->
+    <script src="/js/jltonline.js" async=""></script>
+    <link rel="stylesheet" href="/css/jltonline.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+  </head>
+
+  <body>
+    <!-- bei Ausgabenseiten stattdessen: <body class="issue"> -->
+    <main>
+      <nav class="breadcrumbs">
+        <ul>
+          <li><a href="/">JLTonline</a></li>
+          <li><a href="/about">Über JLTonline</a></li>
+          <li><a href="/about/redaktion">Hinweise für die Redaktion</a></li>
+        </ul>
+      </nav>
+      <h1 class="title">Pflege der JLTonline-Seiten</h1>
+      <hr />
+      <p>
+        Die JLTonline-Seiten basieren auf einer recht einfachen Grundstruktur,
+        bei der die Seiten aus dem Git-Repository direkt an den Browser der
+        Besucher ausgeliefert werden. Änderungen schlagen sich also unmittelbar
+        nieder und die Redakteur:innen arbeiten direkt in den HTML-Dateien im
+        Git-Repository.
+      </p>
+      <p>Eine Übersicht der entsprechenden Dateien:</p>
+      <pre><code>├── index.html           Startseite
+├── frame.html           »Drumherum« auf jeder Seite
+├── about                ⎫
+├── articles             ⎪
+├── conferences          ⎬ Verzeichnisse für die einzelnen
+├── cfp                  ⎪ JLT-Bereiche
+├── reviews              ⎭
+├── css
+│   ├── jltonline.css    Hauptlayout der Seite
+│   ├── jltreview.css    Layout der HTML-Texte
+│   └┄┄ weitere Dateien  (von jltonline.css eingebunden)
+├── js
+│   └── jltonline.js     Skript für das Laden des Frames etc.
+├── favicon.ico          Symbol für die Adressleiste
+├── img                  verschiedene Grafiken für die Seite
+├── .prettierrc          Konfigurationsdatei für den Codeformatierer Prettier
+└── index.php            Umleitungen für die alten Zitier-URLs</code></pre>
+      <p>
+        Grundsätzlich gibt es für jeden der Zeitschriftenbereiche (articles,
+        conferences, cfp, reviews) je ein Unterverzeichnis. Darin gibt es für
+        jede Ausgabe je ein Unterverzeichnis, das entweder nach <em>Band</em
+        ><code>.</code><em>Nummer</em> oder nach dem Jahr (vierstellig) benannt
+        ist. Das Unterverzeichnis <code>about</code> steht für beschreibende
+        Texte (Autorenhinweise etc.) zur Verfügung.
+      </p>
+      <h2 id="dateinamen">Dateinamen</h2>
+      <p>
+        In jedem Unterverzeichnis liegt eine Datei namens
+        <code>index.html</code> mit dem Inhalt, die den Besucher:innen angezeigt
+        werden, die das Verzeichnis anzeigen. In den Verzeichnissen der
+        jeweiligen Ausgaben liegen die Dateien mit den Artikeln direkt. Die
+        Dateinamen (mit Ausnahme des index.html) sind auch das, was in der
+        Adresszeile der Browser angezeigt und zum Referenzieren der Dateien
+        verwendet wird, deshalb sollten folgende Regeln beachtet werden:
+      </p>
+      <ul>
+        <li>
+          nur Kleinbuchstaben <code>a</code>-<code>z</code>, Bindestriche
+          <code>-</code>, Punkte <code>.</code> und Ziffern <code>0</code>-<code
+            >9</code
+          >
+        </li>
+        <li>keine Leerzeichen, Sonderzeichen, Umlaute</li>
+        <li>
+          HTML-Dateien enden auf <code>.html</code>, PDF-Dateien auf
+          <code>.pdf</code>
+        </li>
+      </ul>
+      <p>
+        Für die aus dem alten System übertragenen Dateien wurde folgende
+        Systematik verwendet:
+      </p>
+      <ul>
+        <li>
+          <em>name</em> <code>-</code> <em>titel</em> <code>-</code>
+          <em>typ</em> <code>.</code> <em>sprache</em> <code>.pdf</code> |
+          <code>.html</code>, dabei:
+        </li>
+        <li>
+          <em>name</em> = Nachname der Hauptautor:innen, Umlaute umschreiben
+        </li>
+        <li><em>titel</em> = erste Inhaltswörter aus dem Titel</li>
+        <li>
+          <em>typ</em> = ggf. sowas wie <code>abstract</code>,
+          <code>text</code> (Volltext) etc., oder mitsamt dem
+          <code>-</code> weglassen
+        </li>
+        <li><em>sprache</em> <code>de</code> oder <code>en</code></li>
+      </ul>
+      <p>
+        Also z. B. aus
+        <em
+          >Peter Stockwell: Cognitive Poetics and Literary Theory [Abstract]</em
+        >
+        wird <code>stockwell-cognitive-poetics-abstract.en.pdf</code>.
+      </p>
+      <h2 id="dateiinhalt">Dateiinhalt</h2>
+      <p>
+        Alle HTML-Dateien haben zwingend folgende Grundstruktur. Text in
+        <code>&lt;!-- --&gt;</code> ist erläuternder Kommentar.
+      </p>
+      <div class="sourceCode" id="cb2">
+        <pre
+          class="sourceCode html"
+        ><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;utf-8&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content</span><span class="op">=</span><span class="st">&quot;width=device-width,initial-scale=1.0&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Titel für den Browsertab: --&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>JLTonline 1.1 (2007)<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Einbindung des Designs etc: --&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;/js/jltonline.js&quot;</span><span class="ot"> async</span><span class="op">=</span><span class="st">&quot;&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/css/jltonline.css&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- bei Ausgabenseiten stattdessen: &lt;body class=&quot;issue&quot;&gt; --&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">main</span><span class="dt">&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="co">&lt;!-- Die breadcrumbs-Navigation über dem Haupttitel der Seite: --&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;breadcrumbs&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/&quot;</span><span class="dt">&gt;</span>JLT online<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Articles<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Artikel<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      <span class="co">&lt;!-- Haupttitel der Seite: --&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="dt">&gt;</span>Bd. 1, Nr. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span>Vol. 1, No. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      <span class="co">&lt;!-- Inhalt der Seite hier --&gt;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">main</span><span class="dt">&gt;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre>
+      </div>
+      <h2 id="mehrsprachigkeit">Mehrsprachigkeit</h2>
+      <p>
+        Die englische und deutsche Version der Seiten wird jeweils in der Seite,
+        an der Stelle, an der der entsprechende Text steht, gepflegt:
+        Einerseits, da größere Teile der Seite (Namen, Artikeltitel etc.) nicht
+        übersetzt werden, andererseits um ein »Auseinanderlaufen« der
+        Sprachversionen zu vermeiden.
+      </p>
+      <p>Das Prinzip:</p>
+      <ul>
+        <li>
+          Elemente, die ein Attribut
+          <code class="sourceCode html">lang=&quot;de&quot;</code> oder
+          <code class="sourceCode html">lang=&quot;en&quot;</code> tragen,
+          werden jeweils nur in der jeweiligen Sprache angezeigt; dasselbe gilt
+          für den kompletten Inhalt dieser Elemente
+        </li>
+        <li>
+          Elemente, die <em>zusätzlich</em> das Attribut
+          <code>translate="no"</code> haben, werden immer angezeigt
+        </li>
+      </ul>
+      <p>
+        Außerdem werden die Trennregeln etc. für die entsprechend annotierte
+        Sprache verwendet.
+      </p>
+      <p>Beispiele:</p>
+      <ul>
+        <li>
+          <p>Breadcrumbs in zwei Sprachen:</p>
+          <div class="sourceCode" id="cb3">
+            <pre
+              class="sourceCode html"
+            ><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;breadcrumbs&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/&quot;</span><span class="dt">&gt;</span>JLT online<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Articles<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Artikel<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre>
+          </div>
+          <p>
+            Für den ersten Eintrag ist keine Übersetzung nötig, für den zweiten
+            schon.
+          </p>
+        </li>
+        <li>
+          <p>Beitrag auf Englisch:</p>
+          <div class="sourceCode" id="cb4">
+            <pre
+              class="sourceCode html"
+            ><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">article</span><span class="dt">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;title&quot;</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> translate</span><span class="op">=</span><span class="st">&quot;no&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    From Keyness to Distinctiveness – Triangulation and Evaluation in</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    Computational Literary Studies</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;authors&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    Julian Schröter, Keli Du, Julia Dudar, Cora Rok, Christof Schöch</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;article-links&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;schroter-keyness-triangulation.en.pdf&quot;</span><span class="ot"> hreflang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span>Abstract<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ot">      href</span><span class="op">=</span><span class="st">&quot;https://doi.org/10.1515/jlt-2021-2011&quot;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ot">      lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ot">      class</span><span class="op">=</span><span class="st">&quot;subscription&quot;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="dt">&gt;</span>VOLLTEXT<span class="dt">&lt;/</span><span class="kw">a</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ot">      href</span><span class="op">=</span><span class="st">&quot;https://doi.org/10.1515/jlt-2021-2011&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ot">      lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ot">      class</span><span class="op">=</span><span class="st">&quot;subscription&quot;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="dt">&gt;</span>FULLTEXT<span class="dt">&lt;/</span><span class="kw">a</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&gt;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">article</span><span class="dt">&gt;</span></span></code></pre>
+          </div>
+          <p>
+            Der Titel ist hier auf englisch und wird nicht übersetzt. Der
+            Volltextlink soll übersetzt werden (deutsch mit VOLLTEXT, englisch
+            mit FULLTEXT). Das Wort <code>Abstract</code> und die Namen der
+            Autor:innen funktionieren in beiden Sprachen. Das Ziel des Links ist
+            englischsprachig, deshalb <code>hreflang="en"</code> (optional).
+          </p>
+        </li>
+      </ul>
+      <h2 id="breadcrumbs">Breadcrumbs</h2>
+      <p>
+        In der Inhaltsspalte oberhalb der Hauptüberschrift jeder Seite ist Platz
+        für eine kleine Navigation zu den übergeordneten Bereichen. Diese
+        Navigation muss manuell gepflegt werden.
+      </p>
+      <p>Zur Erläuterung, vgl. das Gesamtbeispiel oben:</p>
+      <ul>
+        <li>
+          Die gesamte Breadcrumbs-Navigation wird durch
+          <code class="sourceCode html"
+            ><span class="dt">&lt;</span><span class="kw">nav</span
+            ><span class="ot"> class</span><span class="op">=</span
+            ><span class="st">&quot;breadcrumbs&quot;</span
+            ><span class="dt">&gt;&lt;</span><span class="kw">ul</span
+            ><span class="dt">&gt;</span> ... <span class="dt">&lt;/</span
+            ><span class="kw">ul</span><span class="dt">&gt;&lt;/</span
+            ><span class="kw">nav</span><span class="dt">&gt;</span>&quot;</code
+          >
+          umschlossen.
+        </li>
+        <li>
+          Jeder Eintrag ist von einem
+          <code>&lt;li&gt; ... &lt;/li&gt;</code> umschlossen.
+        </li>
+        <li>
+          Jeder Eintrag besteht aus einem (nicht übersetzt) oder zwei
+          (Sprachversionen) <code>a</code>-Elementen:
+          <code>&lt;a href="/ziel"&gt;Beschriftung&lt;/a&gt;</code>
+        </li>
+      </ul>
+      <p>
+        Die Trennzeichen (›) werden nicht geschrieben, sondern durch das CSS
+        automatisch eingefügt.
+      </p>
+      <h2 id="frame.html">frame.html</h2>
+      <p>
+        Beim <em>Betrachten</em> jeder Seite wird der Inhalt des body-Teils der
+        Datei frame.html ans Ende des body-Tails der Seite kopiert.
+      </p>
+      <p>
+        frame.html enthält all jene Bestandteile, die auf allen Seiten sichtbar
+        sein sollen:
+      </p>
+      <ul>
+        <li>den Seitenkopf mit dem Hauptmenü</li>
+        <li>die Spalte mit der Redaktion etc.</li>
+        <li>die rechte Spalte mit Verweis auf die Druckausgabe</li>
+        <li>der Footer mit dem Copyrighthinweis</li>
+      </ul>
+    </main>
+  </body>
+</html>
