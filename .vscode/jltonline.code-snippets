@@ -1,0 +1,87 @@
+{
+	// Place your jltonline.github.io-Arbeitsbereich snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Leere JLTonline-Seite": {
+		"scope": "html",
+		"description": "Neue, leere JLTonline-Seite",
+		"prefix": ["<html"],
+		"isFileTemplate": true,
+		"body": [
+		"<!doctype html>",
+		"<html lang='de'>",
+		"  <head>",
+		"    <meta charset='utf-8' />",
+		"    <meta name='viewport' content='width=device-width,initial-scale=1.0' />",
+		"",
+		"    <title>JLTonline – ${1:Titel}</title>",
+		"",
+		"    <!-- Einbindung des Designs etc: -->",
+		"    <script src='/js/jltonline.js' async=''></script>",
+		"    <link rel='stylesheet' href='/css/jltonline.css' />",
+		"    <link rel='stylesheet' href='/css/about.css' />",
+		"  </head>",
+		"",
+		"  <body class='${2|about,issue|}'>",
+		"    <!-- bei Ausgabenseiten stattdessen: <body class='issue'> -->",
+		"    <main>",
+		"      <nav class='breadcrumbs'>",
+		"        <ul>",
+		"          <li><a href='/'>JLTonline</a></li>",		
+		"          ${3}",
+		"        </ul>",
+		"      </nav>",
+		"      <h1 class='title'>JLTonline – $1</h1>",
+		"",
+		"      $0",
+		"",
+		"    </main>",
+		"  </body>",
+		"</html>"]		
+	},
+	"Neue Nummer": {
+		"scope": "html",
+		"prefix": "<li.nummer",
+		"description": "Neue Nummer in der articles-Inhaltsverzeichnisseite"
+		"body": [
+			"<li>",
+			"  <a href=\"${1:Band}.${2:Nummer}\"",
+			"    ><span lang=\"de\">Bd. $1, Nr. $2 (${3:Jahr})</span>",
+			"    <span lang=\"en\">Vol. 17, No. 2 ($3)</span>",
+			"",
+			"    <span class=\"issue-title\" lang=\"en\" translate=\"no\">$0</span>",
+			"  </a>",
+			"</li>"
+		]
+	},
+	"Artikel": {
+		"scope": "html",
+		"prefix": "<article",
+		"description": "Artikeleintrag",
+		"body": [
+			"<article>",
+			"  <p class=\"title\" lang=\"${2|en,de|}\" translate=\"no\">${1:Titel}</p>",
+			"  <p class=\"authors\">${3:Autor_innen}</p>",
+			"  <nav class=\"article-links\">",
+			"    <a href=\"${4:dateiname.pdf}\" lang=\"de\" hreflang=\"$2\" translate=\"no\">Abstract</a>",
+			"    <a href=\"${6:DOI-URL}\" lang=\"de\" translate=\"yes\" class=\"${7|subscription,openaccess|}\">VOLLTEXT</a>",
+			"    <a href=\"$6\" lang=\"en\" translate=\"yes\" class=\"$7\">FULL TEXT</a>",
+			"  </nav>",
+			"</article>",
+			"$0"
+		]
+	}
+}
