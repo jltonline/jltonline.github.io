@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <title>Praktisches Bearbeiten der Website</title>
+
+    <!-- Einbindung des Designs etc: -->
+    <script src="/js/jltonline.js" async=""></script>
+    <link rel="stylesheet" href="/css/jltonline.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+  </head>
+
+  <body>
+    <!-- bei Ausgabenseiten stattdessen: <body class="issue"> -->
+    <main>
+      <nav class="breadcrumbs">
+        <ul>
+          <li><a href="/">JLTonline</a></li>
+          <li><a href="/about">Über JLTonline</a></li>
+          <li><a href="/about/redaktion">Hinweise für die Redaktion</a></li>
+        </ul>
+      </nav>
+      <h1 class="title">Praktisches Bearbeiten der Website</h1>
+      <h2 id="arbeitsumgebung-einrichten">Arbeitsumgebung einrichten</h2>
+      <p>
+        Die Arbeit an der Website kann im Prinzip mit beliebigen (Web-)Editoren
+        erfolgen; ich empfehle die Arbeit mit
+        <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+        (kostenlos). Dazu gibt es zwei Möglichkeiten:
+      </p>
+      <ul>
+        <li>mit einem lokal installierten Visual Studio Code</li>
+        <li>in einem GitHub CodeSpace.</li>
+      </ul>
+      <h3 id="lokales-visual-studio-code">lokales Visual Studio Code</h3>
+      <ol type="1">
+        <li>
+          <p>
+            <a href="https://git-scm.com/download"
+              >Download und Installation von Git</a
+            >
+          </p>
+          <ul>
+            <li>
+              Fragen bei der Installation im Zweifel auf der Standardeinstellung
+              lassen
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            <a href="https://code.visualstudio.com/download"
+              >Download von der Website</a
+            >
+            und
+            <a href="https://code.visualstudio.com/docs/setup/windows"
+              >Installation</a
+            >
+          </p>
+        </li>
+        <li><p>Visual Studio Code starten</p></li>
+        <li>
+          <p>
+            auf der Startseite <em>Clone Repository</em> wählen, falls
+            vorhanden, und die URL des Github-Repositories,
+            <a
+              href="https://github.com/jltonline/jltonline.github.io/"
+              class="uri"
+              >https://github.com/jltonline/jltonline.github.io/</a
+            >
+            eingeben / einkopieren, oder Strg+Umschalt+G bzw. das
+            <em>Source Control</em>-Symbol in der Spalte am linken Rand wählen
+            und dort auf <em>Clone Repository</em> klicken.
+          </p>
+        </li>
+        <li><p>auf Nachfrage bei Github anmelden</p></li>
+        <li>
+          <p>
+            auf die Frage »vertrauen Sie den Autor:innen« mit
+            <em>ja</em> antworten
+          </p>
+        </li>
+        <li>
+          <p>
+            die empfohlenen Extensions installieren (es gibt eine Nachfrage)
+          </p>
+        </li>
+      </ol>
+      <h3 id="github-codespace">Github Codespace</h3>
+      <p>
+        <a href="https://github.com/features/codespaces">Codespaces</a> sind ein
+        Angebot von Github, um mit (z. B.) Visual Studio Code ohne Installation
+        direkt im Browser arbeiten zu können. Dazu wird VSCode in einer von
+        Github zur Verfügung gestellten virtuellen Maschine gestartet und über
+        ein Browserinterface angeboten. Nur eine begrenzte Zahl von Stunden
+        Arbeit mit Codespaces pro Monat ist kostenlos.
+      </p>
+      <ol type="1">
+        <li>
+          Bei Github einloggen und auf die
+          <a href="https://github.com/jltonline/jltonline.github.io"
+            >Seite unseres Github-Repositories</a
+          >
+          gehen
+        </li>
+        <li>
+          Rechts oben auf den grünen Button
+          <strong>&lt;&gt; Code</strong> klicken
+        </li>
+        <li>Tab <em>Codespaces</em> auswählen</li>
+        <li>
+          ggf. aktiven Codespace wählen, oder
+          <em>Create codespace on main</em> klicken.
+        </li>
+      </ol>
+      <h2 id="git-repository-grundsätzliches">
+        Git-Repository: Grundsätzliches
+      </h2>
+      <p>
+        Das Git-Repository enthält alle Daten der Website und deren komplette
+        Versionsgeschichte. Durch das Klonen wird eine Kopie des Repositorys auf
+        dem lokalen Rechner bzw. in dem Codespace angelegt und daraus die
+        aktuelle Version als <em>Arbeitskopie</em> extrahiert, auf der man dann
+        arbeitet.
+      </p>
+      <p>
+        Um eine Änderung auf die tatsächliche Website zu bringen, sind drei
+        Schritte nötig:
+      </p>
+      <ol type="1">
+        <li>
+          Die Änderung muss in der Arbeitskopie durchgeführt und gespeichert
+          werden
+        </li>
+        <li>
+          Die Änderung muss der lokalen Kopie des Repositories hinzugefügt und
+          mit einem Bearbeitungskommentar <em>committet</em> werden
+        </li>
+        <li>
+          Die committeten Änderungen müssen auf Github <em>gepusht</em> werden,
+          d.h. die lokale Kopie des Repository wird mit der Kopie bei Github
+          synchronisiert.
+        </li>
+      </ol>
+      <p>
+        Kurze Zeit später sind die Änderungen dann auch auf der publizierten
+        Website sichtbar.
+      </p>
+      <h2 id="seite-bearbeiten-in-vscode">Seite bearbeiten in VSCode</h2>
+      <p>
+        Beispiel: Es soll ein Konferenzbericht von Renate Muster zur
+        <em>Conference on JLT Maintenance</em> (2024) eingestellt werden. Dazu
+        muss auf der Konferenzberichte-Seite auch noch ein neuer Eintrag für
+        2024 angelegt werden.
+      </p>
+      <ol type="1">
+        <li>
+          <p>
+            Ganz links in VSCode mit dem obersten Symbol den
+            <em>Explorer</em> aktivieren (Strg+Umschalt+E). Dort erscheint der
+            Verzeichnisbaum der JLT-Webseite.
+          </p>
+        </li>
+        <li>
+          <p>
+            Rechtsclick auf den Eintrag <em>conferences</em> und
+            <em>Neuer Ordner</em> auswählen. In der aufgehenden Eingabezeile
+            <code>2024</code> eintippen und die Eingabetaste drücken.
+          </p>
+        </li>
+        <li>
+          <p>
+            Die Dateien für den Artikel –
+            <code>muster-jlt-maintenance.html</code> und
+            <code>muster-jlt-maintenance.pdf</code> – aus dem
+            Betriebssystem-Dateibrowser in den gerade erstellten Ordner
+            <code>2024</code> in VSCode ziehen
+          </p>
+        </li>
+        <li>
+          <p>
+            Die unter <em>conferences</em> einsortierte Datei
+            <code>index.html</code> anklicken, sie geht dann im Editorbereich
+            rechts auf.
+          </p>
+        </li>
+        <li>
+          <p>
+            Ans Ende vor die Zeile mit
+            <code class="sourceCode html"
+              ><span class="dt">&lt;/</span><span class="kw">ul</span
+              ><span class="dt">&gt;</span></code
+            >
+            rollen und dort
+            <code class="sourceCode html"
+              ><span class="dt">&lt;</span><span class="kw">li</span
+              ><span class="dt">&gt;&lt;</span><span class="kw">a</span
+              ><span class="ot"> href</span><span class="op">=</span
+              ><span class="st">&quot;2024&quot;</span
+              ><span class="dt">&gt;</span>2024<span class="dt">&lt;/</span
+              ><span class="kw">a</span><span class="dt">&gt;&lt;/</span
+              ><span class="kw">li</span><span class="dt">&gt;</span></code
+            >
+            eintragen, um einen Link namens <em>2024</em> auf den gleichnamigen
+            Ordner anzulegen. Tipp: Die Tabulatortaste ist hilfreich …
+          </p>
+        </li>
+        <li><p>Diese Datei speichern (Strg+S).</p></li>
+        <li>
+          <p>
+            Den Ordner <em>2024</em> mit der rechten Maustaste anklicken und
+            <em>Neue Datei</em> wählen. Erneut <code>index.html</code> eingeben
+            und die Eingabetaste drücken. Es öffnet sich ein neuer Editor mit
+            der leeren index.html-Datei.
+          </p>
+        </li>
+        <li>
+          <p>
+            In diesem Editor <code>&lt;</code> eintippen und aus der
+            aufpoppenden Autovervollständigungsbox den Eintrag
+            <code>&lt;html Leere JLTonline-Seite</code> auswählen. Es wird eine
+            Vorlage eingefügt, der Cursor steht im Titel. Nun mit der
+            Tabulatortaste ⭾ durch die verschiedenen Formularstellen wechseln
+            und entsprechend ausfüllen:
+          </p>
+          <ul>
+            <li>
+              <p>Als Titel <code>Conferences 2024</code></p>
+            </li>
+            <li>
+              <p>in <code>body class="issue"</code> wählen</p>
+            </li>
+            <li>
+              <p>
+                in den Breadcrumbs die Einträge für die Elternseite hinzufügen:
+              </p>
+              <div class="sourceCode" id="cb1">
+                <pre
+                  class="sourceCode html"
+                ><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/conferences&quot;</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span>Conferences<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/conferences&quot;</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="dt">&gt;</span>Konferenzberichte<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span></code></pre>
+              </div>
+            </li>
+            <li>
+              <p>Noch den <code>&lt;h1&gt;</code>-Eintrag anpassen</p>
+            </li>
+            <li><p>Cursor unter den h1-Eintrag setzen.</p></li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            Nun einen Eintrag für den Beitrag von Frau Muster hinzufügen. Auch
+            dafür gibt es eine <em>Artikel</em>, die vorgeschlagen wird, wenn
+            man <code>&lt;article</code> zu tippen beginnt. Wieder kann man mit
+            der Tabulatortaste ⭾ durch die einzelnen vorgeschlagenen Felder
+            gehen und sie entsprechend ausfüllen.
+          </p>
+          <p>
+            Wenn etwas an dem hinzugefügten Fragment nicht zum Eintrag passt,
+            kann man es gerne direkt bearbeiten. Der Eintrag für den
+            Konferenzbericht könnte am Ende z. B. so aussehen:
+          </p>
+          <div class="sourceCode" id="cb2">
+            <pre
+              class="sourceCode html"
+            ><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">article</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;title&quot;</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> translate</span><span class="op">=</span><span class="st">&quot;no&quot;</span><span class="dt">&gt;</span>Conference on JLT maintenance<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;authors&quot;</span><span class="dt">&gt;</span>Renate Muster<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;article-links&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ot">      href</span><span class="op">=</span><span class="st">&quot;muster-jlt-maintenance.html&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ot">      lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ot">      hreflang</span><span class="op">=</span><span class="st">&quot;en&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ot">      translate</span><span class="op">=</span><span class="st">&quot;no&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="dt">&gt;</span>HTML<span class="dt">&lt;/</span><span class="kw">a</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ot">      href</span><span class="op">=</span><span class="st">&quot;muster-jlt-maintenance.pdf&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ot">      lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ot">      hreflang</span><span class="op">=</span><span class="st">&quot;en&quot;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ot">      translate</span><span class="op">=</span><span class="st">&quot;yes&quot;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ot">      </span><span class="dt">&gt;</span>PDF<span class="dt">&lt;/</span><span class="kw">a</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">article</span><span class="dt">&gt;</span></span></code></pre>
+          </div>
+        </li>
+        <li><p>Datei speichern.</p></li>
+      </ol>
+      <h3 id="vorschau">Vorschau</h3>
+      <p>
+        Die bearbeiteten HTML-Seiten können während des Bearbeitens jederzeit in
+        einer Vorschau oder im Browser angesehen werden. Dazu gibt es rechts
+        oben im Editorbereich einen Vorschau-Knopf (siehe Animation unten). Da
+        der Vorschaubereich eher schmal ist, wird man dort voraussichtlich die
+        mobile Ansicht sehen, über das Burgermenü kann die Vorschau jedoch auch
+        im normalen Browser aufgerufen werden.
+      </p>
+      <figure>
+        <img src="vscode-preview.gif" alt="Vorschau der Seite" />
+        <figcaption aria-hidden="true">Vorschau der Seite</figcaption>
+      </figure>
+      <h2 id="änderungen-mit-github-synchronisieren">
+        Änderungen mit Github synchronisieren
+      </h2>
+      <p>
+        Für die folgenden Änderungen arbeiten wir auf dem Git-Tab des linken
+        Seitenbalkens von VSCode (drittes Icon von oben):
+      </p>
+      <ol type="1">
+        <li>
+          Zunächst in der Zeile <em>Änderungen</em> den Knopf
+          <strong>+</strong> <em>Alle Änderungen bereitstellen</em> wählen. Die
+          geänderten und neuen Dateien erscheinen dann unter einer Überschrift
+          wie <em>gestagte Änderungen</em>.
+        </li>
+        <li>
+          Dann oben in die Zeile einen Kommentar eingeben, der die Änderungen
+          beschreibt.
+        </li>
+        <li>Schließlich den grünen <strong>Commit</strong>-Button klicken.</li>
+      </ol>
+      <p>
+        Die Änderungen sind damit im lokalen Repository committet und der Button
+        verändert sich in <em>Änderungen synchronisieren</em>.
+      </p>
+      <ol start="4" type="1">
+        <li>
+          <strong>Änderungen synchronisieren</strong> klicken. Die Änderungen
+          landen dann auf Github und wenig später auf der Website.
+        </li>
+      </ol>
+      <figure>
+        <img src="vscode-git.gif" alt="Der Ablauf in der Animation" />
+        <figcaption aria-hidden="true">Der Ablauf in der Animation</figcaption>
+      </figure>
+    </main>
+  </body>
+</html>
