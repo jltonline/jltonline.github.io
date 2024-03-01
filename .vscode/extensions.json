@@ -5,7 +5,9 @@
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
 		"ms-vscode.live-server",
-		"esbenp.prettier-vscode"
+		"esbenp.prettier-vscode",
+		"tomoki1207.pdf",
+		"ms-ceintl.vscode-language-pack-de"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
