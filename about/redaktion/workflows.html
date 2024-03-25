@@ -57,46 +57,85 @@
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">article</span><span class="dt">&gt;</span></span></code></pre>
       </div>
-      Zur Erläuterung: -
-      <code class="sourceCode html"
-        ><span class="dt">&lt;</span><span class="kw">article</span
-        ><span class="dt">&gt;</span></code
-      >
-      umschließt den Block zum Eintrag eines Artikels. Darin: -
-      <code class="sourceCode html"
-        ><span class="dt">&lt;</span><span class="kw">p</span
-        ><span class="ot"> class</span><span class="op">=</span
-        ><span class="st">&quot;title&quot;</span
-        ><span class="dt">&gt;&lt;/</span><span class="kw">p</span
-        ><span class="dt">&gt;</span></code
-      >
-      enthält den Titel des Artikels. In der Regel wird hier
-      <a href="grundstruktur.html#mehrsprachigkeit"
-        >eine Sprache angegeben, aber nicht übersetzt</a
-      >
-      -
-      <p class="authors"></p>
-      <code
-        >{.html} enthält alle Autor:innen des Artikels, mit Komma getrennt.
-        -</code
-      >
-      <nav></nav>
-      <p>
-        <code
-          >{.html} enthält alle Links zu dem Artikel. - Jeder Link in dem nav
-          besteht aus einem</code
-        >a<code
-          >-Element, dessen Inhalt die Beschriftung angibt. Das Attribut</code
-        >href` enthält entweder:
-      </p>
-      <pre><code>- den Dateinamen der o.g. Datei
-- die komplette DOI-URL zum entsprechenden Artikel 
-
-Zusätzlich vorhanden sein können, neben [Sprachattributen](grundstruktur.html#mehrsprachigkeit)
-
-- Attribut `class=&quot;subscription&quot;`{.html}, wenn für den Volltext ein Abo nötig ist
-- Attribut `class=&quot;openaccess&quot;`{.html}, wenn der Volltext per Open Access verfügbar ist
-- Attribut `hreflang` mit der Sprache des Linkziels</code></pre>
+      <p>Zur Erläuterung:</p>
+      <ul>
+        <li>
+          <p>
+            <code class="sourceCode html"
+              ><span class="dt">&lt;</span><span class="kw">article</span
+              ><span class="dt">&gt;</span></code
+            >
+            umschließt den Block zum Eintrag eines Artikels. Darin:
+          </p>
+        </li>
+        <li>
+          <p>
+            <code class="sourceCode html"
+              ><span class="dt">&lt;</span><span class="kw">p</span
+              ><span class="ot"> class</span><span class="op">=</span
+              ><span class="st">&quot;title&quot;</span
+              ><span class="dt">&gt;&lt;/</span><span class="kw">p</span
+              ><span class="dt">&gt;</span></code
+            >
+            enthält den Titel des Artikels. In der Regel wird hier
+            <a href="grundstruktur.html#mehrsprachigkeit"
+              >eine Sprache angegeben, aber nicht übersetzt</a
+            >
+          </p>
+        </li>
+        <li>
+          <p>
+            <code class="sourceCode html"
+              ><span class="dt">&lt;</span><span class="kw">p</span
+              ><span class="ot"> class</span><span class="op">=</span
+              ><span class="st">&quot;authors&quot;</span
+              ><span class="dt">&gt;&lt;/</span><span class="kw">p</span
+              ><span class="dt">&gt;</span></code
+            >
+            enthält alle Autor:innen des Artikels, mit Komma getrennt.
+          </p>
+        </li>
+        <li>
+          <p>
+            <code class="sourceCode html"
+              ><span class="dt">&lt;</span><span class="kw">nav</span
+              ><span class="dt">&gt;&lt;/</span><span class="kw">nav</span
+              ><span class="dt">&gt;</span></code
+            >
+            enthält alle Links zu dem Artikel.
+          </p>
+        </li>
+        <li>
+          <p>
+            Jeder Link in dem nav besteht aus einem <code>a</code>-Element,
+            dessen Inhalt die Beschriftung angibt. Das Attribut
+            <code>href</code> enthält entweder:
+          </p>
+          <ul>
+            <li>den Dateinamen der o.g. Datei</li>
+            <li>die komplette DOI-URL zum entsprechenden Artikel</li>
+          </ul>
+          <p>
+            Zusätzlich vorhanden sein können, neben
+            <a href="grundstruktur.html#mehrsprachigkeit">Sprachattributen</a>
+          </p>
+          <ul>
+            <li>
+              Attribut
+              <code class="sourceCode html">class=&quot;subscription&quot;</code
+              >, wenn für den Volltext ein Abo nötig ist
+            </li>
+            <li>
+              Attribut
+              <code class="sourceCode html">class=&quot;openaccess&quot;</code>,
+              wenn der Volltext per Open Access verfügbar ist
+            </li>
+            <li>
+              Attribut <code>hreflang</code> mit der Sprache des Linkziels
+            </li>
+          </ul>
+        </li>
+      </ul>
       <h3 id="abschnitte-sektionen">Abschnitte / Sektionen</h3>
       <p>
         Hat ein Issue mehrere Abschnitte, so umschließt ein
@@ -165,18 +204,18 @@ Zusätzlich vorhanden sein können, neben [Sprachattributen](grundstruktur.html#
               Ausgaben aus dem Artikelbereich:
             </li>
           </ol>
-          <div class="sourceCode" id="cb3">
+          <div class="sourceCode" id="cb2">
             <pre
               class="sourceCode html"
-            ><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;breadcrumbs&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/&quot;</span><span class="dt">&gt;</span>JLT online<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Articles<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Artikel<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre>
+            ><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;breadcrumbs&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/&quot;</span><span class="dt">&gt;</span>JLT online<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Articles<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;/articles&quot;</span><span class="dt">&gt;</span>JLT Artikel<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">nav</span><span class="dt">&gt;</span></span></code></pre>
           </div>
           <ol start="4" type="1">
             <li>
@@ -184,16 +223,16 @@ Zusätzlich vorhanden sein können, neben [Sprachattributen](grundstruktur.html#
               und ggf. darunter in einem h2-Element der Hefttitel.
             </li>
           </ol>
-          <div class="sourceCode" id="cb4">
+          <div class="sourceCode" id="cb3">
             <pre
               class="sourceCode html"
-            ><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="er">&lt;</span><span class="ot">h1</span><span class="dt">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="dt">&gt;</span>Bd. 1, Nr. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span>Vol. 1, No. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> translate</span><span class="op">=</span><span class="st">&quot;no&quot;</span><span class="dt">&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   New Developments in Literary Theory and Related Disciplines</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> <span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span></code></pre>
+            ><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="er">&lt;</span><span class="ot">h1</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;de&quot;</span><span class="dt">&gt;</span>Bd. 1, Nr. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="dt">&gt;</span>Vol. 1, No. 1 (2007)<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;en&quot;</span><span class="ot"> translate</span><span class="op">=</span><span class="st">&quot;no&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   New Developments in Literary Theory and Related Disciplines</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> <span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span></code></pre>
           </div>
           <ol start="5" type="1">
             <li>
